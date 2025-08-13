@@ -5,6 +5,20 @@ export const getProduct = async (req, res) => {
     return res.status(200).json(products)
 }
 
+export const getProductDetails = async (req, res) => {
+    try {
+        const productDetail = await productModel.findById(req.params.id);
+
+        if (!productDetail) {
+            return res.status(404).json({ error: "Produit introuvable" });
+        }
+
+        return res.status(200).json(productDetail);
+    } catch (err) {
+        return res.status(500).json({ error: err.message });
+    }
+};
+
 export const setProduct = async (req, res) => {
 
     if (!req.body.name) {

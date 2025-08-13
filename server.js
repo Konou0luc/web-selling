@@ -15,7 +15,6 @@ app.use(express.json())
 app.use(express.urlencoded({extended : false}))
 app.use("/product", router)
 
-
 app.listen(port, () => {
     console.log("Serveur démarré sur le port " + port)
 })
